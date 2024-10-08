@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --rs-primary-50: #fff5ed;
+  --rs-primary-100: #fce1c7;
+  --rs-primary-200: #f7cca1;
+  --rs-primary-300: #f5bb7d;
+  --rs-primary-400: #f0a959;
+  --rs-primary-500: #ed9b37;
+  --rs-primary-600: #e39127;
+  --rs-primary-700: #cf8217;
+  --rs-primary-800: #b06d09;
+  --rs-primary-900: #875300;
+}
