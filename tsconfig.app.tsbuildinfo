@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/darkmodetoggle.tsx","./src/page/homepage.tsx","./src/page/layout.tsx","./src/page/tractor/addreport.tsx","./src/router/router.tsx"],"version":"5.6.3"}
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/darkmodetoggle.tsx","./src/page/homepage.tsx","./src/page/layout.tsx","./src/page/customer/addcustomer.tsx","./src/page/driver/adddriver.tsx","./src/page/helper/addhelper.tsx","./src/page/tractor/createbilling.tsx","./src/router/router.tsx"],"version":"5.6.3"}
