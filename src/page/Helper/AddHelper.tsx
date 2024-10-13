@@ -10,10 +10,33 @@ import {
   Stack,
   Heading,
   IconButton,
+  Table,
+  Divider,
 } from "rsuite";
+
+const { Column, HeaderCell, Cell } = Table;
 
 const { StringType } = Schema.Types;
 
+const data = [
+  {
+    id: 1,
+    name: "তালহা",
+    mobilNumber: "01812931537",
+    village: "তিকলপুর",
+    nidNumber: "123456789012",
+  },
+  {
+    id: 2,
+    name: "করীম",
+    mobilNumber: "01731185386",
+    village: "নদীকোল",
+    nidNumber: "123456789012",
+  },
+  // Add more data as needed...
+];
+
+// validation schema
 const model = Schema.Model({
   name: StringType().isRequired("নাম প্রয়োজন."),
   mobilNumber: StringType()
@@ -131,7 +154,41 @@ const AddHelper = () => {
           </Modal.Footer>
         </Form>
       </Modal>
+      <Divider>Helper List</Divider>
       {/* Table  */}
+      <Table
+        cellBordered={true}
+        autoHeight
+        data={data}
+        onRowClick={(rowData) => {
+          console.log(rowData);
+        }}
+      >
+        <Column width={60} align="center" fixed>
+          <HeaderCell>Id</HeaderCell>
+          <Cell dataKey="id" />
+        </Column>
+
+        <Column flexGrow={1} minWidth={150}>
+          <HeaderCell>Name</HeaderCell>
+          <Cell dataKey="name" />
+        </Column>
+
+        <Column flexGrow={1} minWidth={150}>
+          <HeaderCell>Village</HeaderCell>
+          <Cell dataKey="village" />
+        </Column>
+
+        <Column flexGrow={1} minWidth={200}>
+          <HeaderCell>Mobile Number</HeaderCell>
+          <Cell dataKey="mobilNumber" />
+        </Column>
+
+        <Column flexGrow={1} minWidth={200}>
+          <HeaderCell>Nid Number</HeaderCell>
+          <Cell dataKey="nidNumber" />
+        </Column>
+      </Table>
     </>
   );
 };

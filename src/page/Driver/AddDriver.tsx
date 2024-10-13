@@ -10,10 +10,33 @@ import {
   Stack,
   Heading,
   IconButton,
+  Table,
+  Divider,
 } from "rsuite";
+
+const { Column, HeaderCell, Cell } = Table;
 
 const { StringType } = Schema.Types;
 
+const data = [
+  {
+    id: 1,
+    name: "চাঁন্দ",
+    mobilNumber: "01812931537",
+    village: "ভবানীপুর",
+    nidNumber: "123456789012",
+  },
+  {
+    id: 2,
+    name: "জান্টু",
+    mobilNumber: "01731185386",
+    village: "বড়িশা",
+    nidNumber: "123456789012",
+  },
+  // Add more data as needed...
+];
+
+// validation schema ⤵
 const model = Schema.Model({
   name: StringType().isRequired("নাম প্রয়োজন."),
   mobilNumber: StringType()
@@ -35,6 +58,7 @@ interface FormValueType {
 }
 
 const AddDriver = () => {
+  // Form state value ⤵
   const [formValue, setFormValue] = useState<FormValueType>({
     name: "",
     mobilNumber: "",
@@ -42,6 +66,7 @@ const AddDriver = () => {
     nidNumber: "",
   });
 
+  // Form submit handler ⤵
   const handleSubmit = () => {
     console.log("Form Submitted:", formValue);
   };
@@ -51,10 +76,12 @@ const AddDriver = () => {
   const handleClose = () => setOpen(false);
   return (
     <>
+      {/* Modal button */}
       <Stack justifyContent="space-between">
         <Heading>Driver Info</Heading>
         <IconButton icon={<PlusIcon />} onClick={handleOpen} />
       </Stack>
+      {/* Modal */}
       <Modal size="xs" open={open} onClose={handleClose}>
         <Modal.Header closeButton={false}>
           <Modal.Title>Driver Info</Modal.Title>
@@ -127,6 +154,41 @@ const AddDriver = () => {
           </Modal.Footer>
         </Form>
       </Modal>
+      <Divider>Driver List</Divider>
+      {/* Table  */}
+      <Table
+        cellBordered={true}
+        autoHeight
+        data={data}
+        onRowClick={(rowData) => {
+          console.log(rowData);
+        }}
+      >
+        <Column width={60} align="center" fixed>
+          <HeaderCell>Id</HeaderCell>
+          <Cell dataKey="id" />
+        </Column>
+
+        <Column flexGrow={1} minWidth={150}>
+          <HeaderCell>Name</HeaderCell>
+          <Cell dataKey="name" />
+        </Column>
+
+        <Column flexGrow={1} minWidth={150}>
+          <HeaderCell>Village</HeaderCell>
+          <Cell dataKey="village" />
+        </Column>
+
+        <Column flexGrow={1} minWidth={200}>
+          <HeaderCell>Mobile Number</HeaderCell>
+          <Cell dataKey="mobilNumber" />
+        </Column>
+
+        <Column flexGrow={1} minWidth={200}>
+          <HeaderCell>Nid Number</HeaderCell>
+          <Cell dataKey="nidNumber" />
+        </Column>
+      </Table>
     </>
   );
 };

@@ -6,7 +6,7 @@ import { CustomProvider } from "rsuite";
 function App() {
   return (
     <>
-      <CustomProvider theme="light">
+      <CustomProvider theme="dark">
         <RouterProvider router={router} />
       </CustomProvider>
     </>

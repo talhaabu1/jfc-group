@@ -83,9 +83,9 @@ const Layout = () => {
                     //   <Icon as={IoIosAddCircle} className="mr-2 align-middle" />
                     // }
                   >
-                    Add Report
+                    Create Billing
                   </Nav.Item>
-                  <Nav.Item eventKey="2-2">Report List</Nav.Item>
+                  <Nav.Item eventKey="2-2">Billing List</Nav.Item>
                 </Nav.Menu>
                 <Nav.Menu
                   eventKey="4"
@@ -121,7 +121,7 @@ const Layout = () => {
             <div className="hidden p-2 md:block"></div>
             <Heading>JFC-GROUP</Heading>
           </div>
-          <div className="p-4">
+          <div className="p-2 md:p-4">
             <Outlet />
           </div>
         </div>
