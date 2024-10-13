@@ -138,67 +138,6 @@ const AddCustomer = () => {
           </Modal.Footer>
         </Form>
       </Modal>
-      {/* Modal */}
-      <Modal size="xs" open={open} onClose={handleClose}>
-        <Modal.Header closeButton={false}>
-          <Modal.Title>Driver Info</Modal.Title>
-        </Modal.Header>
-        <Form
-          fluid
-          model={model}
-          formValue={formValue}
-          onChange={(newFormValue) => {
-            setFormValue(newFormValue as FormValueType);
-          }}
-          onSubmit={handleSubmit}
-        >
-          <Modal.Body>
-            {/* Name Field */}
-            <Form.Group controlId="name">
-              <Form.ControlLabel className="text-lg">নাম</Form.ControlLabel>
-              <Form.Control
-                name="name"
-                accepter={Input}
-                placeholder="নাম লিখুন"
-              />
-            </Form.Group>
-            {/* Number Field */}
-            <Form.Group controlId="village">
-              <Form.ControlLabel className="text-lg">গ্রাম</Form.ControlLabel>
-              <Form.Control
-                name="village"
-                accepter={Input}
-                placeholder="গ্রাম লিখুন"
-                className="w-full"
-              />
-            </Form.Group>
-            {/* Number Field */}
-            <Form.Group controlId="mobilNumber" className="mb-3">
-              <Form.ControlLabel className="text-lg">
-                মোবাইল নাম্বার
-              </Form.ControlLabel>
-              <Form.Control
-                name="mobilNumber"
-                accepter={Input}
-                placeholder="মোবাইল নাম্বার লিখুন"
-                className="w-full"
-              />
-            </Form.Group>
-          </Modal.Body>
-
-          <Modal.Footer>
-            {/* Submit Button */}
-            <Form.Group>
-              <Button appearance="primary" type="submit">
-                Submit
-              </Button>
-              <Button onClick={handleClose} appearance="subtle">
-                Cancel
-              </Button>
-            </Form.Group>
-          </Modal.Footer>
-        </Form>
-      </Modal>
       <Divider>Customer List</Divider>
       {/* Table  */}
       <Table

@@ -78,7 +78,7 @@ const Layout = () => {
                   <Nav.Item
                     eventKey="2-1"
                     as={Link}
-                    to={"/addReportTractor"}
+                    to={"/createBilling"}
                     // icon={
                     //   <Icon as={IoIosAddCircle} className="mr-2 align-middle" />
                     // }

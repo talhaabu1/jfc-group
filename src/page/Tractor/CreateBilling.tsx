@@ -1,0 +1,160 @@
+import { useState } from "react";
+
+import {
+  Form,
+  ButtonToolbar,
+  Button,
+  InputNumber,
+  Schema,
+  InputPicker,
+  SelectPicker,
+} from "rsuite";
+
+const { StringType, NumberType } = Schema.Types;
+
+const data = [
+  "Eugenia",
+  "Bryan",
+  "Linda",
+  "Nancy",
+  "Lloyd",
+  "Alice",
+  "Julia",
+  "Albert",
+  "Louisa",
+  "Lester",
+  "Lola",
+  "Lydia",
+  "Hal",
+  "Hannah",
+  "Harriet",
+  "Hattie",
+  "Hazel",
+  "Hilda",
+].map((item) => ({ label: item, value: item }));
+
+// validation schema ⤵
+const model = Schema.Model({
+  customerName: StringType().isRequired("কাস্টমারের নাম প্রয়োজন."),
+  landArea: NumberType().isRequired("কত কাঠা জমি প্রয়োজন."),
+  rate: NumberType().isRequired("এক কাঠা কোত প্রয়োজন."),
+  driverName: StringType().isRequired("ড্রাইভার নাম প্রয়োজন."),
+  helperName: StringType().isRequired("হেল্পার নাম প্রয়োজন."),
+});
+
+// form value types
+interface FormValueType {
+  customerName: string;
+  landArea: number | null;
+  rate: number | null;
+  driverName: string;
+  helperName: string;
+}
+const CreateBilling = () => {
+  // Form state value ⤵
+  const [formValue, setFormValue] = useState<FormValueType>({
+    customerName: "",
+    landArea: null,
+    rate: null,
+    driverName: "",
+    helperName: "",
+  });
+
+  // Form submit handler ⤵
+  const handleSubmit = () => {
+    console.log("Form Submitted:", formValue);
+  };
+  return (
+    <div className="mx-auto max-w-4xl">
+      <Form
+        fluid
+        model={model}
+        formValue={formValue}
+        onChange={(newFormValue) => {
+          setFormValue(newFormValue as FormValueType);
+        }}
+        onSubmit={handleSubmit}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-3 lg:grid-cols-3">
+          {/* Name Field */}
+          <Form.Group controlId="customerName">
+            <Form.ControlLabel className="text-lg">
+              কাস্টমার নাম
+            </Form.ControlLabel>
+            <Form.Control
+              name="customerName"
+              accepter={InputPicker}
+              placeholder="কাস্টমারের নাম লিখুন"
+              data={data}
+              className="w-full"
+            />
+          </Form.Group>
+          {/* Number Field */}
+          <Form.Group controlId="landArea">
+            <Form.ControlLabel className="text-lg">
+              কত কাঠা জমি
+            </Form.ControlLabel>
+            <Form.Control
+              name="landArea"
+              accepter={InputNumber}
+              placeholder="কত কাঠা জমি লিখুন"
+              className="w-full"
+              min={1}
+            />
+          </Form.Group>
+          {/* Number Field */}
+          <Form.Group controlId="rate">
+            <Form.ControlLabel className="text-lg">
+              এক কাঠা কোত
+            </Form.ControlLabel>
+            <Form.Control
+              name="rate"
+              accepter={InputNumber}
+              placeholder="এক কাঠা কোত লিখুন"
+              className="w-full"
+              min={1}
+            />
+          </Form.Group>
+          {/* Number Field */}
+          <Form.Group controlId="driverName">
+            <Form.ControlLabel className="text-lg">
+              ড্রাইভার নাম
+            </Form.ControlLabel>
+            <Form.Control
+              name="driverName"
+              accepter={SelectPicker}
+              placeholder="ড্রাইভার নাম লিখুন"
+              className="w-full"
+              data={data}
+              searchable={false}
+            />
+          </Form.Group>
+          {/* Number Field */}
+          <Form.Group controlId="helperName">
+            <Form.ControlLabel className="text-lg">
+              হেল্পার নাম
+            </Form.ControlLabel>
+            <Form.Control
+              name="helperName"
+              accepter={SelectPicker}
+              placeholder="হেল্পার নাম লিখুন"
+              className="w-full"
+              data={data}
+              searchable={false}
+            />
+          </Form.Group>
+          {/* Submit Button */}
+        </div>
+        <Form.Group>
+          <ButtonToolbar className="mt-5 flex justify-end md:mt-0">
+            <Button appearance="primary" type="submit">
+              Submit
+            </Button>
+          </ButtonToolbar>
+        </Form.Group>
+      </Form>
+    </div>
+  );
+};
+
+export default CreateBilling;
