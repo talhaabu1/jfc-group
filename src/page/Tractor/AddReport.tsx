@@ -16,6 +16,7 @@ const model = Schema.Model({
   name: StringType().isRequired("কাস্টমারের নাম প্রয়োজন."),
   number: NumberType().isRequired("কত শতক জমি প্রয়োজন."),
   date: DateType().isRequired("তারিখ প্রয়োজন."),
+  centuryTaka: NumberType().isRequired("এক শতক কোত প্রয়োজন."),
 });
 
 // form value types
@@ -23,12 +24,14 @@ interface FormValueType {
   name: string;
   number: number | null;
   date: Date | null;
+  centuryTaka: number | null;
 }
 const AddReport = () => {
   const [formValue, setFormValue] = useState<FormValueType>({
     name: "",
     number: null,
     date: new Date(), // Set current date as default
+    centuryTaka: null,
   });
 
   const handleSubmit = () => {
@@ -45,10 +48,10 @@ const AddReport = () => {
         }}
         onSubmit={handleSubmit}
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 md:gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-3 lg:grid-cols-3">
           {/* Date Field */}
           <Form.Group controlId="date">
-            <Form.ControlLabel>তারিখ</Form.ControlLabel>
+            <Form.ControlLabel className="text-lg">তারিখ</Form.ControlLabel>
             <Form.Control
               name="date"
               accepter={DatePicker}
@@ -59,7 +62,9 @@ const AddReport = () => {
           </Form.Group>
           {/* Name Field */}
           <Form.Group controlId="name">
-            <Form.ControlLabel>কাস্টমার নাম</Form.ControlLabel>
+            <Form.ControlLabel className="text-lg">
+              কাস্টমার নাম
+            </Form.ControlLabel>
             <Form.Control
               name="name"
               accepter={Input}
@@ -68,11 +73,25 @@ const AddReport = () => {
           </Form.Group>
           {/* Number Field */}
           <Form.Group controlId="number">
-            <Form.ControlLabel>কত শতক জমি</Form.ControlLabel>
+            <Form.ControlLabel className="text-lg">
+              কত শতক জমি
+            </Form.ControlLabel>
             <Form.Control
               name="number"
               accepter={InputNumber}
               placeholder="কত শতক জমি লিখুন"
+              className="w-full"
+            />
+          </Form.Group>
+          {/* Number Field */}
+          <Form.Group controlId="centuryTaka">
+            <Form.ControlLabel className="text-lg">
+              এক শতক কোত
+            </Form.ControlLabel>
+            <Form.Control
+              name="centuryTaka"
+              accepter={InputNumber}
+              placeholder="এক শতক কোত লিখুন"
               className="w-full"
             />
           </Form.Group>

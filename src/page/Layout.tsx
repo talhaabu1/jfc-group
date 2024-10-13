@@ -1,6 +1,6 @@
 import { Icon, Menu } from "@rsuite/icons";
 import { useState } from "react";
-import { FaTractor, FaUserCircle } from "react-icons/fa";
+import { FaTractor, FaUserCircle, FaUsers } from "react-icons/fa";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { Heading, IconButton, Nav, Sidenav } from "rsuite";
 
@@ -12,6 +12,9 @@ const Layout = () => {
   const getActiveKey = () => {
     if (location.pathname === "/") return "1";
     if (location.pathname.startsWith("/addReportTractor")) return "2-1";
+    if (location.pathname.startsWith("/addCustomer")) return "4-1";
+    if (location.pathname.startsWith("/addDriver")) return "4-2";
+    if (location.pathname.startsWith("/addHelper")) return "4-3";
     // Add more conditions based on your routes
     return null;
   };
@@ -86,12 +89,18 @@ const Layout = () => {
                 </Nav.Menu>
                 <Nav.Menu
                   eventKey="4"
-                  title="Settings"
-                  icon={<Icon as={FaTractor} />}
+                  title="User"
+                  icon={<Icon as={FaUsers} />}
                 >
-                  <Nav.Item eventKey="4-1">Applications</Nav.Item>
-                  <Nav.Item eventKey="4-2">Channels</Nav.Item>
-                  <Nav.Item eventKey="4-3">Versions</Nav.Item>
+                  <Nav.Item eventKey="4-1" as={Link} to={"/addCustomer"}>
+                    Customer
+                  </Nav.Item>
+                  <Nav.Item eventKey="4-2" as={Link} to={"/addDriver"}>
+                    Driver
+                  </Nav.Item>
+                  <Nav.Item eventKey="4-3" as={Link} to={"/addHelper"}>
+                    Helper
+                  </Nav.Item>
                 </Nav.Menu>
               </Nav>
             </Sidenav.Body>

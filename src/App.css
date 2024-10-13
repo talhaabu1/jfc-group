@@ -5,8 +5,8 @@ body,
 }
 
 /* Remove Chrome's autofill background color and set text color */
-/* input:-webkit-autofill {
+input:-webkit-autofill {
   background-color: transparent !important;
   -webkit-text-fill-color: white !important;
   transition: background-color 5000s ease-in-out 0s !important;
-} */
+}
