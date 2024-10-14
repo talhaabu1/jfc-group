@@ -36,8 +36,8 @@ const data = [
 // validation schema ⤵
 const model = Schema.Model({
   customerName: StringType().isRequired("কাস্টমারের নাম প্রয়োজন."),
-  landArea: NumberType().isRequired("কত কাঠা জমি প্রয়োজন."),
-  rate: NumberType().isRequired("এক কাঠা কোত প্রয়োজন."),
+  landArea: NumberType().isRequired("জমির পরিমাণ প্রয়োজন."),
+  rate: NumberType().isRequired("দর প্রয়োজন."),
   driverName: StringType().isRequired("ড্রাইভার নাম প্রয়োজন."),
   helperName: StringType().isRequired("হেল্পার নাম প্রয়োজন."),
 });
@@ -65,7 +65,7 @@ const CreateBilling = () => {
     console.log("Form Submitted:", formValue);
   };
   return (
-    <div className="mx-auto max-w-4xl">
+    <div className="mx-auto max-w-3xl rounded-md bg-[#F7F7FA] p-3 shadow-md dark:bg-[#1B1D24] md:p-10">
       <Form
         fluid
         model={model}
@@ -75,7 +75,7 @@ const CreateBilling = () => {
         }}
         onSubmit={handleSubmit}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-3 lg:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-3">
           {/* Name Field */}
           <Form.Group controlId="customerName">
             <Form.ControlLabel className="text-lg">
@@ -92,25 +92,23 @@ const CreateBilling = () => {
           {/* Number Field */}
           <Form.Group controlId="landArea">
             <Form.ControlLabel className="text-lg">
-              কত কাঠা জমি
+              জমির পরিমাণ
             </Form.ControlLabel>
             <Form.Control
               name="landArea"
               accepter={InputNumber}
-              placeholder="কত কাঠা জমি লিখুন"
+              placeholder="জমির পরিমাণ লিখুন"
               className="w-full"
               min={1}
             />
           </Form.Group>
           {/* Number Field */}
           <Form.Group controlId="rate">
-            <Form.ControlLabel className="text-lg">
-              এক কাঠা কোত
-            </Form.ControlLabel>
+            <Form.ControlLabel className="text-lg">দর</Form.ControlLabel>
             <Form.Control
               name="rate"
               accepter={InputNumber}
-              placeholder="এক কাঠা কোত লিখুন"
+              placeholder="দর লিখুন"
               className="w-full"
               min={1}
             />
@@ -147,7 +145,11 @@ const CreateBilling = () => {
         </div>
         <Form.Group>
           <ButtonToolbar className="mt-5 flex justify-end md:mt-0">
-            <Button appearance="primary" type="submit">
+            <Button
+              appearance="primary"
+              type="submit"
+              style={{ fontWeight: "600" }}
+            >
               Submit
             </Button>
           </ButtonToolbar>

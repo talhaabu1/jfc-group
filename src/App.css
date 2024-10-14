@@ -1,7 +1,8 @@
 body,
 .rs-theme-dark,
-.rs-theme-light {
-  font-family: monospace; /* Change to your desired font */
+.rs-theme-light,
+custom-dropdown-menu {
+  font-family: monospace !important; /* Change to your desired font */
 }
 
 /* Remove Chrome's autofill background color and set text color */

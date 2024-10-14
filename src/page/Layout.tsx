@@ -9,9 +9,11 @@ const Layout = () => {
   // Function to extract active eventKey based on the current path
   const location = useLocation(); // Get the current URL path
 
+  // Function to handle sidebar active color ⤵
   const getActiveKey = () => {
     if (location.pathname === "/") return "1";
-    if (location.pathname.startsWith("/addReportTractor")) return "2-1";
+    if (location.pathname.startsWith("/createBilling")) return "2-1";
+    if (location.pathname.startsWith("/billingList")) return "2-2";
     if (location.pathname.startsWith("/addCustomer")) return "4-1";
     if (location.pathname.startsWith("/addDriver")) return "4-2";
     if (location.pathname.startsWith("/addHelper")) return "4-3";
@@ -85,7 +87,9 @@ const Layout = () => {
                   >
                     Create Billing
                   </Nav.Item>
-                  <Nav.Item eventKey="2-2">Billing List</Nav.Item>
+                  <Nav.Item eventKey="2-2" as={Link} to={"/billingList"}>
+                    Billing List
+                  </Nav.Item>
                 </Nav.Menu>
                 <Nav.Menu
                   eventKey="4"
